@@ -1,0 +1,32 @@
+[
+    {
+        "Question": "And which of these would you say best describes your current lifestyle?",
+        "Synthetic Responses": {
+            "do some things environmentally friendly": 7,
+            "do many things environmentally friendly": 2,
+            "don't do anything environmentally friendly": 1
+        }
+    },
+    {
+        "Question": "And which of these would you say best describes your current lifestyle?",
+        "Synthetic Responses": {
+            "do some things environmentally friendly": 7,
+            "do many things environmentally friendly": 3
+        }
+    },
+    {
+        "Question": "And which of these would you say best describes your current lifestyle?",
+        "Synthetic Responses": {
+            "do some things environmentally friendly": 8,
+            "do many things environmentally friendly": 2
+        }
+    },
+    {
+        "Question": "And which of these would you say best describes your current lifestyle?",
+        "Synthetic Responses": {
+            "do some things environmentally friendly": 7,
+            "don't do anything environmentally friendly": 1,
+            "do many things environmentally friendly": 2
+        }
+    }
+]

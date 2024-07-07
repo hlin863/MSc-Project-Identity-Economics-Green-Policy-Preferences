@@ -1,0 +1,54 @@
+[
+    {
+        "Question": "Please select the extent to which you agree or disagree with the following statement \"My behaviour and everyday lifestyle contribute to climate change.\"",
+        "Synthetic Responses": {
+            "tend to disagree": 1,
+            "tend to agree": 8,
+            "strongly agree": 1
+        }
+    },
+    {
+        "Question": "Please select the extent to which you agree or disagree with the following statement \"My behaviour and everyday lifestyle contribute to climate change.\"",
+        "Synthetic Responses": {
+            "tend to agree": 8,
+            "tend to disagree": 2
+        }
+    },
+    {
+        "Question": "Please select the extent to which you agree or disagree with the following statement \"My behaviour and everyday lifestyle contribute to climate change.\"",
+        "Synthetic Responses": {
+            "tend to agree": 9,
+            "strongly agree": 1
+        }
+    },
+    {
+        "Question": "Please select the extent to which you agree or disagree with the following statement \"My behaviour and everyday lifestyle contribute to climate change.\"",
+        "Synthetic Responses": {
+            "tend to agree": 9,
+            "strongly agree": 1
+        }
+    },
+    {
+        "Question": "Please select the extent to which you agree or disagree with the following statement \"My behaviour and everyday lifestyle contribute to climate change.\"",
+        "Synthetic Responses": {
+            "tend to agree": 7,
+            "strongly agree": 3
+        }
+    },
+    {
+        "Question": "Please select the extent to which you agree or disagree with the following statement \"My behaviour and everyday lifestyle contribute to climate change.\"",
+        "Synthetic Responses": {
+            "neither": 1,
+            "tend to agree": 6,
+            "strongly agree": 3
+        }
+    },
+    {
+        "Question": "Please select the extent to which you agree or disagree with the following statement \"My behaviour and everyday lifestyle contribute to climate change.\"",
+        "Synthetic Responses": {
+            "tend to agree": 32,
+            "neither": 3,
+            "strongly agree": 5
+        }
+    }
+]

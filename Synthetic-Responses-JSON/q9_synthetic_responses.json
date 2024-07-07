@@ -1,0 +1,42 @@
+[
+    {
+        "Question": "Based on your profile, to which extent do you believe that climate change is controllable?",
+        "Synthetic Responses": {
+            "strongly agree": 0,
+            "tend to agree": 3,
+            "neither": 4,
+            "tend to disagree": 0,
+            "strongly disagree": 3
+        }
+    },
+    {
+        "Question": "Based on your profile, to which extent do you believe that climate change is controllable?",
+        "Synthetic Responses": {
+            "strongly agree": 2,
+            "tend to agree": 3,
+            "neither": 2,
+            "tend to disagree": 2,
+            "strongly disagree": 1
+        }
+    },
+    {
+        "Question": "Based on your profile, to which extent do you believe that climate change is controllable?",
+        "Synthetic Responses": {
+            "tend to agree": 7,
+            "strong agree": 3
+        }
+    },
+    {
+        "Question": "Based on your profile, to which extent do you believe that climate change is controllable?",
+        "Synthetic Responses": {
+            "tend to agree": 10
+        }
+    },
+    {
+        "Question": "Based on your profile, to which extent do you believe that climate change is controllable?",
+        "Synthetic Responses": {
+            "tend to agree": 47,
+            "strong agree": 13
+        }
+    }
+]

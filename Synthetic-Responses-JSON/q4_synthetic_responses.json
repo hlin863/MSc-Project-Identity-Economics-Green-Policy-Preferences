@@ -1,0 +1,53 @@
+[
+    {
+        "Question": "Could you share your attitude toward environmental policies and whether you believe personal change is necessary to protect the future?",
+        "Synthetic Responses": {
+            "strongly agree": 0,
+            "agree": 4,
+            "disagree": 2,
+            "strongly disagree": 0,
+            "already changed": 4
+        }
+    },
+    {
+        "Question": "Could you share your attitude toward environmental policies and whether you believe personal change is necessary to protect the future?",
+        "Synthetic Responses": {
+            "strongly agree": 0,
+            "agree": 1,
+            "disagree": 2,
+            "strongly disagree": 0,
+            "already changed": 7
+        }
+    },
+    {
+        "Question": "Could you share your attitude toward environmental policies and whether you believe personal change is necessary to protect the future?",
+        "Synthetic Responses": {
+            "already changed": 2,
+            "disagree": 3,
+            "strongly agree": 2,
+            "agree": 2,
+            "strongly disagree": 1
+        }
+    },
+    {
+        "Question": "Could you share your attitude toward environmental policies and whether you believe personal change is necessary to protect the future?",
+        "Synthetic Responses": {
+            "strongly agree": 9,
+            "agree": 1
+        }
+    },
+    {
+        "Question": "Could you share your attitude toward environmental policies and whether you believe personal change is necessary to protect the future?",
+        "Synthetic Responses": {
+            "strongly agree": 8,
+            "agree": 2
+        }
+    },
+    {
+        "Question": "Could you share your attitude toward environmental policies and whether you believe personal change is necessary to protect the future?",
+        "Synthetic Responses": {
+            "strongly agree": 47,
+            "agree": 3
+        }
+    }
+]

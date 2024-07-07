@@ -1,0 +1,30 @@
+[
+    {
+        "Question": "Does your accommodation experience pollution cause by traffic or industry?",
+        "Synthetic Responses": {
+            "Yes": 9,
+            "No": 1
+        }
+    },
+    {
+        "Question": "Does your accommodation experience pollution cause by traffic or industry?",
+        "Synthetic Responses": {
+            "Yes": 10,
+            "No": 0
+        }
+    },
+    {
+        "Question": "Does your accommodation experience pollution cause by traffic or industry?",
+        "Synthetic Responses": {
+            "yes": 8,
+            "no": 2
+        }
+    },
+    {
+        "Question": "Does your accommodation experience pollution cause by traffic or industry?",
+        "Synthetic Responses": {
+            "yes": 43,
+            "no": 27
+        }
+    }
+]
