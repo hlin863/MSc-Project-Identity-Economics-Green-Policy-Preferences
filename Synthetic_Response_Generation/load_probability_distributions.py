@@ -36,4 +36,4 @@ def test_load_highest_qualification_distributions():
 
     print("load_highest_qualification_distributions PASSED")
 
-test_load_highest_qualification_distributions()
+# test_load_highest_qualification_distributions()
