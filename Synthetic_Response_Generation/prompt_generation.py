@@ -46,6 +46,15 @@ def get_system_and_user_prompts(question, potential_answers, wave_number, by_gro
 
     if args:
         group = args[0]
+
+        if len(args) > 1:
+
+            is_conditioning = args[1]
+
+            if is_conditioning:
+
+                # Generate the conditioning information for the model. 
+                pass
         
         income_prompt, age_group_prompt, highest_qualification_prompt, ethnic_group_prompt, current_job_prompt, gender_prompt, marital_status_prompt, residence_prompt, region_prompt, number_of_children_prompt, voting_intention_prompt = generate_profiling_subprompts(wave_number, by_group, group)
 

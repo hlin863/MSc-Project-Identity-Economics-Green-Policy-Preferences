@@ -48,7 +48,14 @@ def send_prompt_to_model(question, potential_answers, wave_number, by_group, *ar
     if args:
         group = args[0]
 
-        system_prompts, user_prompts = get_system_and_user_prompts(question, potential_answers, wave_number, by_group, group)
+        if len(args) > 1:
+
+            is_conditioning = args[1]
+
+            if is_conditioning:    
+                system_prompts, user_prompts = get_system_and_user_prompts(question, potential_answers, wave_number, by_group, group, is_conditioning)
+            else:
+                system_prompts, user_prompts = get_system_and_user_prompts(question, potential_answers, wave_number, by_group, group)
     else:
         system_prompts, user_prompts = get_system_and_user_prompts(question, potential_answers, wave_number, by_group)
 
@@ -190,11 +197,14 @@ def simulate_synthetic_responses(question, pot_responses, wave_number, by_group,
     for i in range(n_samples):
 
         if args:
-
             group = args[0] # determines which group to simulate the responses for
-
-            response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group, group)
-
+            # check if conditioning information is used to fine-tune the responses. 
+            # check the size of the args tuple to determine if the group is used to fine-tune the responses.
+            if len(args) > 1:
+                is_conditioning = args[1] # the second optional argument is used to determine if conditioning information is used to fine-tune the responses.
+                response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group, group, is_conditioning)
+            else:
+                response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group, group)
         else:
         
             response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group)
