@@ -86,7 +86,7 @@ def visualise_synthetic_and_ukhls_distributions(file_name, question, question_nu
     # print("Distribution Dictionary: ", distribution_dict)
 
     x = range(len(ordered_categories))  # label locations
-    width = 0.35  # width of the bars
+    width = 0.15  # width of the bars
 
     fig, ax = plt.subplots()
     rects1 = ax.bar(x, aggregated_synthetic_responses.values(), width, label='Synthetic', color='blue')
@@ -128,4 +128,110 @@ def test_formatted_json_filepath(path):
     else:
         print(f"File not found: {path}")
 
-test_formatted_json_filepath(demo_json_filepath)
+# test_formatted_json_filepath(demo_json_filepath)
+
+def visualise_responses_by_group(file_names, question):
+
+    synthetic_responses = []
+
+    if question == "Demo":
+        ordered_categories = ["Don't do Anything Environmentally Friendly", "Do One or Two Things Environmentally Friendly", "Do Some Things Environmentally Friendly", "Do Many Things Environmentally Friendly", "Do Everything Environmentally Friendly"]
+    if question == "Q1":
+        print("Question 1")
+        ordered_categories = ["Entirely Negative", "More negative than positive", "Neither positive nor negative", "More positive than negative", "Entirely Positive"]
+    if question == "Q2":
+        ordered_categories = ["Strongly Agree", "Tend to Agree", "Neither", "Tend to Disagree", "Strongly Disagree"]
+
+    # convert ordered_categories to lower case
+    ordered_categories = [category.lower() for category in ordered_categories]
+
+    for file in file_names:
+
+        # load synthetic responses from each file. 
+        with open(file, "r") as file:
+            synthetic_responses_by_group = json.load(file)
+
+        # print(synthetic_responses_by_group)
+
+        # if the response if a list of dictionaries then sum the responses
+        if isinstance(synthetic_responses_by_group, list):
+
+            aggregated_synthetic_responses = {}
+
+            for entry in synthetic_responses_by_group:
+
+                for response, count in entry["Synthetic Responses"].items():
+
+                    # print("Response: ", response)
+                    # print("Count: ", count)
+
+                    if response in aggregated_synthetic_responses:
+                        aggregated_synthetic_responses[response] += count
+                    else:
+                        print("Response: ", response)
+                        print("Count: ", count)
+                        aggregated_synthetic_responses[response] = count
+
+            # implement a code to iterate through the ordered categories to check if they are in the synthetic responses
+            for category in ordered_categories:
+
+                if category not in aggregated_synthetic_responses:
+                    aggregated_synthetic_responses[category] = 0
+
+            # sort the synthetic responses in the order of the ordered categories
+            aggregated_synthetic_responses = {key: aggregated_synthetic_responses[key] for key in ordered_categories}
+
+            print(aggregated_synthetic_responses) 
+
+            synthetic_responses.append(aggregated_synthetic_responses)
+
+        else:
+
+            synthetic_responses.append(synthetic_responses_by_group)
+
+    x = range(len(synthetic_responses[0]))  # label locations
+
+    fig, ax = plt.subplots()
+
+    width = 0.15 # width of the bars
+
+    for i in range(len(synthetic_responses)):
+        rects = ax.bar([p + i * width for p in x], synthetic_responses[i].values(), width, label=f'Group {i+1}')
+
+    ax.set_ylabel('Frequency') # set the y-axis label
+
+    if question == "Demo":
+        ax.set_title(f'Responses to Demo Question by Group')
+    else:
+        ax.set_title(f'Responses to Question {question} by Group')
+
+    ax.set_xticks([p + width for p in x]) # set the x-axis ticks
+
+    # format the ordered_categories to be in title case
+    ordered_categories = ['\n'.join(wrap(l, 12)) for l in ordered_categories]
+
+    ax.set_xticklabels(ordered_categories, rotation=90, fontsize=8) # set the x-axis labels
+
+    plt.tight_layout() # adjust the layout of the plot
+
+    age_groups = ["18-34", "35-54", "55 or older"]
+
+    plt.legend(title="Age Group", labels=age_groups) # display the legend
+
+    plt.savefig(f"C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Figures\\UKHLS-Hypothesis-2\\Question {question} by Group.png", bbox_inches='tight') # save the figure as a png
+
+    plt.show() # display the plot
+
+def test_visualise_responses_by_group():
+    base_json_filepath = "C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Synthetic-Responses-JSON\\Hypothesis-2"
+
+    demo_question_file_paths = []
+
+    age_groups = ["18-34", "35-54", "55 or older"]
+
+    for group in age_groups:
+        demo_question_file_paths.append(base_json_filepath + f"\\question_1_{group}.json")
+
+    visualise_responses_by_group(demo_question_file_paths, "Q1")
+
+# test_visualise_responses_by_group()

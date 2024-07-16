@@ -8,5 +8,25 @@
             "do one or two things environmentally friendly": 0,
             "do everything environmentally friendly": 0
         }
+    },
+    {
+        "Question": "And which of these would you say best describes your current lifestyle?",
+        "Synthetic Responses": {
+            "do many things environmentally friendly": 47,
+            "do some things environmentally friendly": 49,
+            "do everything environmentally friendly": 4,
+            "don't do anything environmentally friendly": 0,
+            "do one or two things environmentally friendly": 0
+        }
+    },
+    {
+        "Question": "And which of these would you say best describes your current lifestyle?",
+        "Synthetic Responses": {
+            "do some things environmentally friendly": 56,
+            "do many things environmentally friendly": 40,
+            "do everything environmentally friendly": 4,
+            "don't do anything environmentally friendly": 0,
+            "do one or two things environmentally friendly": 0
+        }
     }
 ]

@@ -1,0 +1,12 @@
+[
+    {
+        "Question": "Please select the extent to which you agree or disagree with the following statement: My behaviour and everyday lifestyle contribute to climate change.",
+        "Synthetic Responses": {
+            "tend to agree": 78,
+            "neither": 5,
+            "strongly agree": 17,
+            "tend to disagree": 0,
+            "strongly disagree": 0
+        }
+    }
+]
