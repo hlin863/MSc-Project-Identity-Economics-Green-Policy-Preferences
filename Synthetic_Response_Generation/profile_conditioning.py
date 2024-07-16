@@ -162,6 +162,6 @@ def generate_profiling_subprompts(wave_number, by_group, *args):
     return income_prompt, age_group_prompt, highest_qualification_prompt, ethnic_group_prompt, current_job_prompt, gender_prompt, marital_status_prompt, residence_prompt, region_prompt, number_of_children_prompt, voting_intention_prompt
 
 # tests profile conditioning
-for i in range(1, 14): # test the function for 13 waves of UKHLS data. 
-    print(generate_profiling_subprompts(i, 1, "18 - 34")) 
+# for i in range(1, 14): # test the function for 13 waves of UKHLS data. 
+#     print(generate_profiling_subprompts(i, 1, "18 - 34")) 
     # run a test to generate the subprompts for the synthetic individual's profile for the first wave of the UKHLS study

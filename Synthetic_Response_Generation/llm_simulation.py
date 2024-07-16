@@ -332,6 +332,42 @@ def visualise_synthetic_and_ukhls_distributions(file_name, question, question_nu
 
     plt.show() # display the plot
 
+def write_responses_to_json(question, new_responses, filename):
+    """
+    Description: A function to append synthetic responses related to a question to a JSON file without overwriting existing content, 
+    using a list to support multiple entries including potentially identical questions.
+
+    Parameters:
+    • 'question' (str): The question to which the responses belong.
+    • 'new_responses' (dict): A dictionary of synthetic responses.
+    • 'filename' (string): The name of the JSON file to write the responses to.
+
+    Returns:
+    • A JSON file containing the updated responses.
+    """
+
+    # Load existing data or initialize an empty list if the file doesn't exist or is empty
+    try:
+        with open(filename, "r") as file:
+            existing_responses = json.load(file)
+            if not isinstance(existing_responses, list):
+                raise ValueError("The existing JSON content is not a list.")
+    except (FileNotFoundError, json.JSONDecodeError):
+        existing_responses = []
+
+    # Create a new entry for the response
+    response_entry = {
+        "Question": question,
+        "Synthetic Responses": new_responses
+    }
+
+    # Append the new entry to the list
+    existing_responses.append(response_entry)
+
+    # Write the updated list back to the JSON file
+    with open(filename, "w") as file:
+        json.dump(existing_responses, file, indent=4)
+
 def simulate_environmental_responses(question, question_number, potential_answers, n_samples, json_filepath, distributions, wave_numbers, wave_number, is_simulate, by_group, *args):
 
     '''
@@ -367,21 +403,19 @@ def simulate_environmental_responses(question, question_number, potential_answer
 
         sample_size += n_samples # update the sample size with the new responses
 
-        responses = display_synthetic_profiles_and_responses(responses, question, potential_answers) # display the synthetic profiles and responses
+        write_responses_to_json(question, responses, json_filepath) # write the synthetic responses to the JSON file
 
-        responses_tally = extract_synthetic_responses(responses, potential_answers) # extract the synthetic responses
+    if by_group == 0:
 
-        write_responses_to_json(question, responses_tally, json_filepath) # write the synthetic responses to the JSON file
+        for distribution, wave_number in zip(distributions, wave_numbers):
+            # iterate through each ukhls distribution for comparing with the synthetic responses. 
+            
+            distribution = {key: round(value * sample_size) for key, value in distribution.items()}
 
-    for distribution, wave_number in zip(distributions, wave_numbers):
-        # iterate through each ukhls distribution for comparing with the synthetic responses. 
-        
-        distribution = {key: round(value * sample_size) for key, value in distribution.items()}
+            # test display the distribution data to check if the values are correct
+            # print(f"Wave {wave_number} Distribution: {distribution}")
 
-        # test display the distribution data to check if the values are correct
-        # print(f"Wave {wave_number} Distribution: {distribution}")
-
-        visualise_synthetic_and_ukhls_distributions(json_filepath, question, question_number, distribution, wave_number)
+            visualise_synthetic_and_ukhls_distributions(json_filepath, question, question_number, distribution, wave_number)
 
 def test_simulate_synthetic_responses_function():
     """
@@ -400,4 +434,4 @@ def test_simulate_synthetic_responses_function():
 
     print("test_simulate_synthetic_responses_function PASSED")
 
-test_simulate_synthetic_responses_function()
+# test_simulate_synthetic_responses_function()
