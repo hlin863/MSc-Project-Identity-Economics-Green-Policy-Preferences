@@ -26,7 +26,7 @@ import matplotlib.pyplot as plt
 from textwrap import wrap
 
 @backoff.on_exception(backoff.expo, openai.RateLimitError)
-def send_prompt_to_model(question, potential_answers, wave_number):
+def send_prompt_to_model(question, potential_answers, wave_number, by_group, *args):
     """
     Sends generated prompts to a language model and handles the model's response.
 
@@ -34,6 +34,7 @@ def send_prompt_to_model(question, potential_answers, wave_number):
         question (str): The question to be sent to the language model.
         potential_answers (list): A list of potential answers to the question.
         wave_number (int): The wave number of the UKHLS study.
+        by_group (int): An integer value to determine if the function is simulating synthetic responses by group and which group is the function is testing for.
 
     Returns:
         response (openai.ChatCompletion): The response from the language model.
@@ -43,7 +44,13 @@ def send_prompt_to_model(question, potential_answers, wave_number):
         openai.error.RateLimitError: If the API rate limit is exceeded.
         openai.error.OpenAIError: If there is an error with the OpenAI API.
     """
-    system_prompts, user_prompts = get_system_and_user_prompts(question, potential_answers, wave_number)
+
+    if args:
+        group = args[0]
+
+        system_prompts, user_prompts = get_system_and_user_prompts(question, potential_answers, wave_number, by_group, group)
+    else:
+        system_prompts, user_prompts = get_system_and_user_prompts(question, potential_answers, wave_number, by_group)
 
     # define the max_tokens as the maximum length of answers from potential_answers
     max_tokens = max(len(answer) for answer in potential_answers)
@@ -89,7 +96,7 @@ def test_send_prompt_to_model_function():
 
     client = OpenAI(api_key = api_key)
 
-    response, system_prompt = send_prompt_to_model(test_question, test_potential_answers, test_wave_number)
+    response, system_prompt = send_prompt_to_model(test_question, test_potential_answers, test_wave_number, 0)
 
     print("My response is: ", response)
 
@@ -162,7 +169,7 @@ def extract_synthetic_responses(synthetic_responses, potential_responses):
 
     return sythetic_response_tally
 
-def simulate_synthetic_responses(question, pot_responses, wave_number, n_samples = 10):
+def simulate_synthetic_responses(question, pot_responses, wave_number, by_group, n_samples = 10, *args):
     """
     Description: A function to simulate synthetic responses to the question "Is climate change beyond control" based on the user's profile.
 
@@ -170,6 +177,7 @@ def simulate_synthetic_responses(question, pot_responses, wave_number, n_samples
     •	‘question’ (string): the question to be answered by the LLM.
     •	‘pot_responses’ (list): a list of potential responses for the question.
     •	‘wave_number’ (int): the wave number of the UKHLS study.
+    •	‘by_group’ (int): an integer value to determine if the function is simulating synthetic responses by group and which group is the function is testing for.
     •	‘n_samples’ (int): the number of synthetic responses to be generated.
 
     Returns:
@@ -180,8 +188,16 @@ def simulate_synthetic_responses(question, pot_responses, wave_number, n_samples
     synthetic_responses = []
 
     for i in range(n_samples):
+
+        if args:
+
+            group = args[0] # determines which group to simulate the responses for
+
+            response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group, group)
+
+        else:
         
-        response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number)
+            response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group)
 
         synthetic_responses.append((user_prompt, response)) # append the synthetic response to the list of synthetic responses
 
@@ -316,7 +332,7 @@ def visualise_synthetic_and_ukhls_distributions(file_name, question, question_nu
 
     plt.show() # display the plot
 
-def simulate_environmental_responses(question, question_number, potential_answers, n_samples, json_filepath, distributions, wave_numbers, wave_number, is_simulate):
+def simulate_environmental_responses(question, question_number, potential_answers, n_samples, json_filepath, distributions, wave_numbers, wave_number, is_simulate, by_group, *args):
 
     '''
     Description: A function to simulate synthetic responses to specific questions about environmental issues.
@@ -328,6 +344,7 @@ def simulate_environmental_responses(question, question_number, potential_answer
     • json_filepath (str): the path to the JSON file containing the synthetic responses.
     • distributions (dict): a dictionary containing the probability distributions of the UKHLS environmental views context.
     • is_simulate (bool): a boolean value to determine if the function should simulate synthetic responses or not. (default is True
+    • by_group (int): an integer value to determine if the function is simulating synthetic responses by group and which group is the function is testing for. (default is 0)
 
     Returns:
     None
@@ -338,7 +355,15 @@ def simulate_environmental_responses(question, question_number, potential_answer
 
     if is_simulate:
 
-        responses = simulate_synthetic_responses(question, potential_answers, wave_number, n_samples) # simulate synthetic responses
+        if args:
+
+            group = args[0] # determines which group to simulate the responses for
+
+            responses = simulate_synthetic_responses(question, potential_answers, wave_number, by_group, n_samples, group)
+
+        else:
+
+            responses = simulate_synthetic_responses(question, potential_answers, wave_number, by_group, n_samples) # simulate synthetic responses
 
         sample_size += n_samples # update the sample size with the new responses
 
@@ -366,7 +391,7 @@ def test_simulate_synthetic_responses_function():
     test_potential_answers = ["Strongly agree", "Tend to agree", "Neither agree nor disagree", "Tend to disagree", "Strongly disagree"]
     test_wave_number = 1
 
-    synthetic_responses = simulate_synthetic_responses(test_question, test_potential_answers, test_wave_number)
+    synthetic_responses = simulate_synthetic_responses(test_question, test_potential_answers, test_wave_number, 0)
 
     # display the synthetic responses
     print(synthetic_responses)
@@ -374,3 +399,5 @@ def test_simulate_synthetic_responses_function():
     assert len(synthetic_responses) == 5
 
     print("test_simulate_synthetic_responses_function PASSED")
+
+# test_simulate_synthetic_responses_function()
