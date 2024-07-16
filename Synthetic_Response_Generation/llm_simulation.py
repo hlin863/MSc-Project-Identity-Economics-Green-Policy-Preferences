@@ -391,7 +391,7 @@ def test_simulate_synthetic_responses_function():
     test_potential_answers = ["Strongly agree", "Tend to agree", "Neither agree nor disagree", "Tend to disagree", "Strongly disagree"]
     test_wave_number = 1
 
-    synthetic_responses = simulate_synthetic_responses(test_question, test_potential_answers, test_wave_number, 0)
+    synthetic_responses = simulate_synthetic_responses(test_question, test_potential_answers, test_wave_number, 1, 10, "18 - 34")
 
     # display the synthetic responses
     print(synthetic_responses)
@@ -400,4 +400,4 @@ def test_simulate_synthetic_responses_function():
 
     print("test_simulate_synthetic_responses_function PASSED")
 
-# test_simulate_synthetic_responses_function()
+test_simulate_synthetic_responses_function()
