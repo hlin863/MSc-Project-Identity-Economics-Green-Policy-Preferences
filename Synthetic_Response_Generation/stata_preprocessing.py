@@ -263,12 +263,13 @@ def preprocess_stata_data(data):
 
 # Example usage:
 # Assuming `stata_demo_question_responses_wave_ten` is the DataFrame to be preprocessed
-stata_demo_question_filepath = "C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Stata-Results\\UKHLS_demo_responses.dta"
+def test_preprocess_stata_data_function():
+    stata_demo_question_filepath = "C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Stata-Results\\UKHLS_demo_responses.dta"
 
-stata_demo_question_responses = load_stata_file(stata_demo_question_filepath)
+    stata_demo_question_responses = load_stata_file(stata_demo_question_filepath)
 
-stata_demo_question_responses_wave_eight, stata_demo_question_responses_wave_nine, stata_demo_question_responses_wave_ten = [stata_demo_question_responses[stata_demo_question_responses["wavename"] == wavename] for wavename in [8.0, 9.0, 10.0]]
+    stata_demo_question_responses_wave_eight, stata_demo_question_responses_wave_nine, stata_demo_question_responses_wave_ten = [stata_demo_question_responses[stata_demo_question_responses["wavename"] == wavename] for wavename in [8.0, 9.0, 10.0]]
 
-stata_demo_question_responses_wave_ten_preprocessed = preprocess_stata_data(stata_demo_question_responses_wave_ten)
+    stata_demo_question_responses_wave_ten_preprocessed = preprocess_stata_data(stata_demo_question_responses_wave_ten)
 
-print(stata_demo_question_responses_wave_ten_preprocessed)
+    print(stata_demo_question_responses_wave_ten_preprocessed)
