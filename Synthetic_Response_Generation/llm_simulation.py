@@ -61,34 +61,68 @@ def send_prompt_to_model(question, potential_answers, wave_number, by_group, *ar
 
     # define the max_tokens as the maximum length of answers from potential_answers
     max_tokens = max(len(answer) for answer in potential_answers)
+
+    if len(args) > 1:
+
+        model_id = args[2]
+
+        # Implement exception handling to process OpenAI API errors. 
+        try:
+            # Create a chat completion request to the OpenAI API
+            response = openai.chat.completions.create(
+                model=model_id,
+                messages=[
+                    {"role": "system", "content": system_prompts[0]},
+                    {"role": "user", "content": user_prompts[0]},
+                    {"role": "system", "content": system_prompts[1]}
+                ],
+                temperature=0.7, # change the temperature back to 0.7 following argyle 2022 response
+                max_tokens=max_tokens  # Adjust max_tokens as needed
+            )
+
+            time.sleep(1) # sleep for 1 second to avoid rate limit errors
+
+            # returns the response from the language model and the system prompt containing the synthetic individual's profile
+            return response.choices[0].message.content, user_prompts[0]
+
+        except openai.RateLimitError as e:
+            # Handle rate limit errors specifically
+            print(f"Rate limit error: {e}")
+            raise
+        except openai.OpenAIError as e:
+            # Handle other OpenAI API errors
+            print(f"OpenAI API error: {e}")
+            return None, None
+
+    else:
     
-    # Implement exception handling to process OpenAI API errors. 
-    try:
-        # Create a chat completion request to the OpenAI API
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": system_prompts[0]},
-                {"role": "user", "content": user_prompts[0]},
-                {"role": "system", "content": system_prompts[1]}
-            ],
-            temperature=0.7, # change the temperature back to 0.7 following argyle 2022 response
-            max_tokens=max_tokens  # Adjust max_tokens as needed
-        )
+        # Implement exception handling to process OpenAI API errors. 
+        try:
+            # Create a chat completion request to the OpenAI API
+            response = openai.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": system_prompts[0]},
+                    {"role": "user", "content": user_prompts[0]},
+                    {"role": "system", "content": system_prompts[1]}
+                ],
+                temperature=0.7, # change the temperature back to 0.7 following argyle 2022 response
+                max_tokens=max_tokens  # Adjust max_tokens as needed
+            )
 
-        time.sleep(1) # sleep for 1 second to avoid rate limit errors
+            time.sleep(1) # sleep for 1 second to avoid rate limit errors
 
-        # returns the response from the language model and the system prompt containing the synthetic individual's profile
-        return response.choices[0].message.content, user_prompts[0]
+            # returns the response from the language model and the system prompt containing the synthetic individual's profile
+            return response.choices[0].message.content, user_prompts[0]
 
-    except openai.RateLimitError as e:
-        # Handle rate limit errors specifically
-        print(f"Rate limit error: {e}")
-        raise
-    except openai.OpenAIError as e:
-        # Handle other OpenAI API errors
-        print(f"OpenAI API error: {e}")
-        return None, None
+        except openai.RateLimitError as e:
+            # Handle rate limit errors specifically
+            print(f"Rate limit error: {e}")
+            raise
+        except openai.OpenAIError as e:
+            # Handle other OpenAI API errors
+            print(f"OpenAI API error: {e}")
+            return None, None
 
 
 def test_send_prompt_to_model_function():
@@ -160,6 +194,9 @@ def extract_synthetic_responses(synthetic_responses, potential_responses):
             # get the index of the potential response with the highest similarity score
             most_similar_index = np.argmax(similarity_scores)
 
+            print("Type of most_similar_index:", type(most_similar_index))
+            print("Value of most_similar_index:", most_similar_index)
+
             # get the most similar potential response
             most_similar_response = potential_responses[most_similar_index]
 
@@ -194,15 +231,19 @@ def simulate_synthetic_responses(question, pot_responses, wave_number, by_group,
     # initialise a variable to store the synthetic responses
     synthetic_responses = []
 
-    for i in range(n_samples):
+    # print(type(n_samples))
 
+    for i in range(n_samples):
         if args:
             group = args[0] # determines which group to simulate the responses for
             # check if conditioning information is used to fine-tune the responses. 
             # check the size of the args tuple to determine if the group is used to fine-tune the responses.
             if len(args) > 1:
                 is_conditioning = args[1] # the second optional argument is used to determine if conditioning information is used to fine-tune the responses.
-                response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group, group, is_conditioning)
+
+                model = args[2] # the third optional argument is used to determine the model to fine-tune the responses.
+
+                response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group, group, is_conditioning, model)
             else:
                 response, user_prompt = send_prompt_to_model(question, pot_responses, wave_number, by_group, group)
         else:
@@ -397,15 +438,21 @@ def simulate_environmental_responses(question, question_number, potential_answer
     '''
     sample_size = count_responses(json_filepath) # get the total number of responses in the JSON file
 
-    print(f"Sample size: {sample_size}")
+    # print(f"Sample size: {sample_size}")
 
     if is_simulate:
 
         if args:
 
+            # print("Args: ", args)
+
             group = args[0] # determines which group to simulate the responses for
 
-            responses = simulate_synthetic_responses(question, potential_answers, wave_number, by_group, n_samples, group)
+            is_conditioning = args[1]
+
+            model = args[2]
+
+            responses = simulate_synthetic_responses(question, potential_answers, wave_number, by_group, n_samples, group, is_conditioning, model)
 
         else:
 
