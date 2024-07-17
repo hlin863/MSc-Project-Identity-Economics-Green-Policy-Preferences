@@ -22,6 +22,14 @@ def load_environmental_distribution(name, wave_number):
 
         file_path = f'C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Environmental-Views-Variables\\OverallClimateChangeImpactPerception\\Overall Climate Change Impact Perception Probability Distribution Wave {wave_number}.json'
 
+        with open(file_path, 'r') as f:
+            return json.load(f)
+
     if name == "scenv_bccc":
 
+        print("scenv_bccc")
+
         file_path = f'C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Environmental-Views-Variables\\scenv_bccc\\Scenv Bccc Probability Distribution Wave {wave_number}.json'
+
+        with open(file_path, 'r') as f:
+            return json.load(f)

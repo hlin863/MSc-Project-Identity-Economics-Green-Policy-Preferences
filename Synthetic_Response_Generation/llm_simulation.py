@@ -279,7 +279,7 @@ def count_responses(filename):
     
     return total_responses
 
-def visualise_synthetic_and_ukhls_distributions(file_name, question, question_number, distribution, wave_number):
+def visualise_synthetic_and_ukhls_distributions(file_name, question, question_number, distribution, wave_number, *args):
     '''
     Description: A function to visualise the synthetic and UKHLS distributions of the responses to a question.
 
@@ -344,6 +344,9 @@ def visualise_synthetic_and_ukhls_distributions(file_name, question, question_nu
     # sort the synthetic responses in the order of the ordered categories
     aggregated_synthetic_responses = {key: aggregated_synthetic_responses[key] for key in ordered_categories} 
 
+    # count the total number of aggregated synthetic responses
+    total_synthetic_responses = sum(aggregated_synthetic_responses.values())
+
     # convert distribution to a dictionary structure format
     distribution_dict = {str(key): value for key, value in distribution.items()}
 
@@ -352,6 +355,9 @@ def visualise_synthetic_and_ukhls_distributions(file_name, question, question_nu
 
     # sort distribution dictionary in the order of the ordered categories
     distribution_dict = {key: distribution_dict[key] for key in ordered_categories}
+
+    # multiply each value in the distribution_dict by the total number of synthetic responses
+    distribution_dict = {key: round(value * total_synthetic_responses) for key, value in distribution_dict.items()}
 
     # check distributions of aggregated synthetic responses and distribution_dict
     # print("Aggregated Synthetic Responses: ", aggregated_synthetic_responses)
@@ -378,8 +384,21 @@ def visualise_synthetic_and_ukhls_distributions(file_name, question, question_nu
     ax.set_xticklabels(ordered_categories, rotation=90, fontsize=8) # set the x-axis labels
     ax.legend() # display the legend
 
-    # save the figure as a png file
-    plt.savefig(f"C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Figures\\Synthetic-UKHLS-Comparisons\\Question {question_number} Wave {wave_number}.png", bbox_inches='tight')
+    if args:
+
+        is_conditioning = args[0]
+
+        if is_conditioning:
+
+            plt.savefig(f"C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Figures\\Synthetic-UKHLS-Comparisons\\Question {question_number} Wave {wave_number} Fine-tuned.png", bbox_inches='tight')
+
+        else:
+
+            plt.savefig(f"C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Figures\\Synthetic-UKHLS-Comparisons\\Question {question_number} Wave {wave_number}.png", bbox_inches='tight')
+    
+    else:
+        # save the figure as a png file
+        plt.savefig(f"C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Figures\\Synthetic-UKHLS-Comparisons\\Question {question_number} Wave {wave_number}.png", bbox_inches='tight')
 
     plt.show() # display the plot
 
@@ -472,7 +491,15 @@ def simulate_environmental_responses(question, question_number, potential_answer
             # test display the distribution data to check if the values are correct
             # print(f"Wave {wave_number} Distribution: {distribution}")
 
-            visualise_synthetic_and_ukhls_distributions(json_filepath, question, question_number, distribution, wave_number)
+            if len(args) > 1:
+
+                is_conditioning = args[1]
+
+            else:
+
+                is_conditioning = False
+
+            visualise_synthetic_and_ukhls_distributions(json_filepath, question, question_number, distribution, wave_number, is_conditioning)
 
 def test_simulate_synthetic_responses_function():
     """
