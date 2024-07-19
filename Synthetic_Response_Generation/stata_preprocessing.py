@@ -33,9 +33,9 @@ def removing_nan_columns(data):
 
     nan_columns = data.columns[data.isnull().any()].tolist() # get a list of column names in data with nan values.
 
-    data = data.dropna(subset=nan_columns) # remove nan values from the data
+    data_cleaned = data.dropna(subset=nan_columns) # remove nan values from the data
 
-    return data
+    return data_cleaned
 
 def count_invalid_values(special_values, column_data):
     count = 0
