@@ -1,0 +1,12 @@
+[
+    {
+        "Question": "To which extent strongly do you agree or disagree with the following statement: 'I would be prepared to pay more for environmentally friendly products.'?",
+        "Synthetic Responses": {
+            "strongly agree": 38,
+            "tend to agree": 45,
+            "strongly disagree": 9,
+            "tend to disagree": 6,
+            "neither agree nor disagree": 2
+        }
+    }
+]

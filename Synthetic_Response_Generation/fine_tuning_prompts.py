@@ -1,6 +1,7 @@
 from profile_conditioning import generate_current_job_prompt, generate_residence_prompt, generate_region_prompt, generate_number_of_children_prompt, generate_voting_intention_prompt, generate_income_prompt, generate_age_group_prompt, generate_highest_qualification_prompt
 from load_probability_distributions import *
 import random
+import pandas as pd
 
 def generate_gender_substring(gender):
 
@@ -107,6 +108,12 @@ def generating_income_substring(role):
 
     return income_prompt
 
+def generate_current_lifestyle_substring(current_lifestyle):
+    
+    current_lifestyle_prompt = f"My current lifestyle is {current_lifestyle}."
+    
+    return current_lifestyle_prompt
+
 def visualise_profile_and_opinion_string(profile, response_variable, opinion):
 
     gender_substring = generate_gender_substring(profile["sex"])
@@ -131,10 +138,16 @@ def visualise_profile_and_opinion_string(profile, response_variable, opinion):
 
     income_substring = generating_income_substring(profile["jbnssec_dv"])
 
+    # Check if "scenv_crlf" is in the Series index
+    if "scenv_crlf" in profile:
+        current_life_style_substring = generate_current_lifestyle_substring(profile["scenv_crlf"])
+    else:
+        current_life_style_substring = ""
+
     opinion_substring = opinion
 
     # concatenate the substrings to form the profile and opinion string
-    profile_string = f"{gender_substring} {marital_status_substring} {qualification_substring} {ethnicity_substring} {number_of_children_substring} {region_substring} {urban_rural_substring} {agegroup_substring} {job_substring} {voting_intention_substring} {income_substring}" 
+    profile_string = f"{gender_substring} {marital_status_substring} {qualification_substring} {ethnicity_substring} {number_of_children_substring} {region_substring} {urban_rural_substring} {agegroup_substring} {job_substring} {voting_intention_substring} {income_substring} {current_life_style_substring}" 
 
     if response_variable == "scenv_crlf":
 

@@ -33,3 +33,10 @@ def load_environmental_distribution(name, wave_number):
 
         with open(file_path, 'r') as f:
             return json.load(f)
+
+    if name == "scenv_pmep":
+
+        file_path = f'C:\\Users\\haoch\\Documents\\COMP0190\\Data\\COMP0191-MSc-Project-Code\\Environmental-Views-Variables\\scenv_pmep\\Scenv Pmep Probability Distribution Wave {wave_number}.json'
+
+        with open(file_path, 'r') as f:
+            return json.load(f)
