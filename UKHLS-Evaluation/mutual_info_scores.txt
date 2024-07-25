@@ -1,0 +1,9 @@
+Question 1: 1.3322
+Question 2: 1.0549
+Question 3: 0.9503
+Question 4: 1.0549
+Question 5: 0.9503
+Question 6: 0.6931
+Question 7: 0.6931
+Question 8: 0.0
+Question 9: 1.0549
