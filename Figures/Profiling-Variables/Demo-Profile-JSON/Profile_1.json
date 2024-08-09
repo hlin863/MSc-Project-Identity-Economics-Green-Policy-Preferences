@@ -1,12 +1,12 @@
 {
-    "Age": "In terms of my age, my age group is 30 - 39.",
-    "Qualification": "In terms of my qualifications, My highest qualification is a level.",
-    "Ethnicity": "Racially, I am Other White background.",
-    "Job": "My profession is Intermediate Occupations.",
-    "Income": "Financially, my monthly income is £6613.",
+    "Age": "In terms of my age, my age group is 70 years or older.",
+    "Qualification": "In terms of my qualifications, My highest qualification is Other.",
+    "Ethnicity": "Racially, I am British.",
+    "Job": "My profession is Higher Professional.",
+    "Income": "Financially, my monthly income is £10223.",
     "Gender": "I am Male.",
-    "Marital Status": "My marital status is Single.",
+    "Marital Status": "My marital status is Married.",
     "Residence": "I live in an urban area.",
     "Number of Children": "I have 3 children.",
-    "Voting Intention": "Ideologically, I describe myself as a Labour Party supporter."
+    "Voting Intention": "Ideologically, I describe myself as a Conservative Party supporter."
 }
