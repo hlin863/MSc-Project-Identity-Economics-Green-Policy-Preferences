@@ -2,51 +2,9 @@
     {
         "Question": "Overall, how positive or negative do you think the effects of climate change will be?",
         "Synthetic Responses": {
-            "more negative than positive": 9,
-            "neither positive nor negative": 1
-        }
-    },
-    {
-        "Question": "Overall, how positive or negative do you think the effects of climate change will be?",
-        "Synthetic Responses": {
-            "more negative than positive": 10
-        }
-    },
-    {
-        "Question": "Overall, how positive or negative do you think the effects of climate change will be?",
-        "Synthetic Responses": {
-            "more negative than positive": 9,
-            "neither positive nor negative": 1
-        }
-    },
-    {
-        "Question": "Overall, how positive or negative do you think the effects of climate change will be?",
-        "Synthetic Responses": {
-            "more negative than positive": 9,
-            "neither positive nor negative": 1
-        }
-    },
-    {
-        "Question": "Overall, how positive or negative do you think the effects of climate change will be?",
-        "Synthetic Responses": {
-            "more negative than positive": 7,
-            "entirely negative": 1,
-            "neither positive nor negative": 2
-        }
-    },
-    {
-        "Question": "Overall, how positive or negative do you think the effects of climate change will be?",
-        "Synthetic Responses": {
-            "more negative than positive": 5,
-            "entirely negative": 5
-        }
-    },
-    {
-        "Question": "Overall, how positive or negative do you think the effects of climate change will be?",
-        "Synthetic Responses": {
-            "more negative than positive": 26,
-            "entirely negative": 13,
-            "neither positive nor negative": 1
+            "more negative than positive": 37,
+            "neither": 52,
+            "entirely negative": 11
         }
     }
 ]
