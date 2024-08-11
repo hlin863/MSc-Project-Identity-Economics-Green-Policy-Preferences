@@ -1,0 +1,1 @@
+{"strongly agree": 0.023180879684664958, "tend to agree": 0.0769993117687543, "neither": 0.015971344553588174, "tend to disagree": 0.03798973909779141, "strongly disagree": 0.07816179690921604}

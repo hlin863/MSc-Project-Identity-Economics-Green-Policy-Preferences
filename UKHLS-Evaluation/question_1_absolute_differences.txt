@@ -1,0 +1,1 @@
+{"don't do anything environmentally friendly": 0.01744607582255893, "do one or two things environmentally friendly": 0.3365726450239489, "do some things environmentally friendly": 0.11546692546097737, "do many things environmentally friendly": 0.2576796168174561, "do everything environmentally friendly": 0.019127821431925617}
