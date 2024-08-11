@@ -2,50 +2,8 @@
     {
         "Question": "Based on your profile, please state your opinion about joining environmental organisations.",
         "Synthetic Responses": {
-            "mentioned": 5,
-            "not mentioned": 5
-        }
-    },
-    {
-        "Question": "Based on your profile, please state your opinion about joining environmental organisations.",
-        "Synthetic Responses": {
-            "mentioned": 6,
-            "not mentioned": 4
-        }
-    },
-    {
-        "Question": "Based on your profile, please state your opinion about joining environmental organisations.",
-        "Synthetic Responses": {
-            "mentioned": 6,
-            "not mentioned": 4
-        }
-    },
-    {
-        "Question": "Based on your profile, please state your opinion about joining environmental organisations.",
-        "Synthetic Responses": {
-            "not mentioned": 3,
-            "mentioned": 7
-        }
-    },
-    {
-        "Question": "Based on your profile, please state your opinion about joining environmental organisations.",
-        "Synthetic Responses": {
-            "mentioned": 6,
-            "not mentioned": 4
-        }
-    },
-    {
-        "Question": "Based on your profile, please state your opinion about joining environmental organisations.",
-        "Synthetic Responses": {
-            "not mentioned": 5,
-            "mentioned": 5
-        }
-    },
-    {
-        "Question": "Based on your profile, please state your opinion about joining environmental organisations.",
-        "Synthetic Responses": {
-            "mentioned": 24,
-            "not mentioned": 16
+            "not mentioned": 48,
+            "mentioned": 52
         }
     }
 ]

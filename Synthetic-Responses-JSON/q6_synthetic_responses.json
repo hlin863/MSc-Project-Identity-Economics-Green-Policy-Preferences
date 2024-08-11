@@ -2,74 +2,9 @@
     {
         "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
         "Synthetic Responses": {
-            "Yes - already buy": 1,
-            "Yes - seriously considering": 4,
-            "No": 1,
-            "Considered and rejected": 4
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "Yes - already buy": 1,
-            "Yes - seriously considering": 1,
-            "No": 2,
-            "Considered and rejected": 6
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "yes - seriously considering": 9,
-            "yes - already buy": 1
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "yes - already buy": 3,
-            "yes - seriously considering": 7
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "yes - seriously considering": 10
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "yes - seriously considering": 9,
-            "yes - already buy": 1
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "yes - seriously considering": 6,
-            "yes - already buy": 3,
-            "no": 1
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "yes - seriously considering": 9,
-            "yes - already buy": 1
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "yes - seriously considering": 9,
-            "no": 1
-        }
-    },
-    {
-        "Question": "Does your household buy or considering buying electricity on a Green Tariff? By Green Tariff, we mean a payment scheme where your electricity supplier provides electricity from renewable sources such as wind power to the National Grid for the amount you use. ",
-        "Synthetic Responses": {
-            "yes - seriously considering": 10
+            "yes - seriously considering": 57,
+            "no": 28,
+            "yes - already buy": 15
         }
     }
 ]

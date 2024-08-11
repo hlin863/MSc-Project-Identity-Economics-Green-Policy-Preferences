@@ -2,48 +2,11 @@
     {
         "Question": "If things continue on their current course, will there be an environmental disaster?",
         "Synthetic Responses": {
-            "strongly agree": 2,
-            "tend to agree": 2,
-            "neither": 4,
-            "tend to disagree": 0,
-            "strongly disagree": 2
-        }
-    },
-    {
-        "Question": "If things continue on their current course, will there be an environmental disaster?",
-        "Synthetic Responses": {
-            "strongly agree": 1,
-            "tend to agree": 3,
-            "neither": 5,
-            "tend to disagree": 0,
-            "strongly disagree": 1
-        }
-    },
-    {
-        "Question": "If things continue on their current course, will there be an environmental disaster?",
-        "Synthetic Responses": {
-            "strongly agree": 3,
-            "tend to agree": 5,
-            "neither": 1,
-            "tend to disagree": 1
-        }
-    },
-    {
-        "Question": "If things continue on their current course, will there be an environmental disaster?",
-        "Synthetic Responses": {
-            "tend to disagree": 2,
-            "tend to agree": 6,
-            "strongly agree": 1,
-            "neither": 1
-        }
-    },
-    {
-        "Question": "If things continue on their current course, will there be an environmental disaster?",
-        "Synthetic Responses": {
-            "tend to agree": 41,
-            "neither": 2,
-            "tend to disagree": 4,
-            "strongly agree": 13
+            "neither": 30,
+            "tend to agree": 13,
+            "strongly disagree": 14,
+            "tend to disagree": 38,
+            "strongly agree": 5
         }
     }
 ]
